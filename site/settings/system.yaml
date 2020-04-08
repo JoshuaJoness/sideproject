@@ -1,0 +1,8 @@
+app_key: s5ifycMVUWYpGIhaVIVofHzYj5Xxd0iK
+yaml_parser: symfony
+locales:
+  en:
+    full: en_US
+    name: English
+    url: 'http://sideproject.test/'
+timezone: UTC
