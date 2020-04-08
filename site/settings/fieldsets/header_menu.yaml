@@ -1,0 +1,16 @@
+sections:
+  main:
+    display: Main
+    fields:
+      header_link:
+        type: text
+        display: 'Header Link'
+      header_link_type:
+        options:
+          text: Text
+          button: Button
+        inline: false
+        type: radio
+        display: 'Header Link Type'
+taxonomies: true
+title: 'Header Link'

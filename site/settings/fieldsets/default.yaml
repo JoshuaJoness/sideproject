@@ -1,0 +1,28 @@
+title: 'Side Project'
+sections:
+  main:
+    display: Main
+    fields:
+      header_menu:
+        type: replicator
+        display: 'Header Menu'
+        sets:
+          header_link:
+            display: 'Header Link'
+            fields:
+              header_link:
+                fieldset: header_menu
+                type: partial
+                display: 'Header Link'
+      image:
+        sets:
+          image:
+            display: Image
+            fields:
+              image:
+                fieldset: image
+                type: partial
+                display: Image
+        type: replicator
+        display: Image
+taxonomies: true

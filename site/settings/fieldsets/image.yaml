@@ -1,0 +1,21 @@
+sections:
+  main:
+    display: Main
+    fields:
+      image:
+        container: main
+        folder: /
+        restrict: true
+        max_files: 1
+        mode: grid
+        type: assets
+        display: Image
+      alignment:
+        options:
+          left: Left
+          right: Right
+        inline: false
+        type: radio
+        display: Alignment
+taxonomies: true
+title: Image

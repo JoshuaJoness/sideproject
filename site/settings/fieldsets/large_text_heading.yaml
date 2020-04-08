@@ -1,0 +1,9 @@
+sections:
+  main:
+    display: Main
+    fields:
+      large_text_heading:
+        type: text
+        display: 'Large Text Heading'
+taxonomies: true
+title: 'Large Text Heading'

@@ -1,0 +1,43 @@
+<div class="container">
+<div class="header">
+    <div class="header-links-left">
+        {{ header_menu }}
+            {{ if type == "header_link" }}
+                    {{ if header_link_type == "text" }}
+                        <p class="text-link"> {{ header_link }} </p> 
+                    {{ /if }}       
+            {{ /if }}
+        {{ /header_menu }}
+     </div>
+     <div class="header-links-right">
+         {{ header_menu }}
+             {{ if type == "header_link" }}
+                     {{ if header_link_type == "button" }}
+                         <p class="text-link"> {{ header_link }} </p> 
+                     {{ /if }}       
+             {{ /if }}
+         {{ /header_menu }}
+      </div>
+ </div>
+    
+        <h1 class="large-text-heading">{{ large_text_heading }}</h1>
+{{ image }}
+        {{ if type == "image" }}
+            
+                
+                {{ if alignment == "left" }}
+                    <img src="{{ image }}" class="left-aligned-image"/>
+                {{ /if }}
+                {{ if alignment == "right" }}
+                    <img src="{{ image }}" class="right-aligned-image"/>
+                {{ /if }}
+                
+             
+        {{ /if }}
+{{ /image }}
+
+<input class="input"></input>
+    
+    <!-- {{ content }} -->
+</div>
+
