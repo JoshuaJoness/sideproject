@@ -4,5 +4,5 @@ locales:
   en:
     full: en_US
     name: English
-    url: ''
+    url: 'https://sideproject-aa.herokuapp.com/'
 timezone: UTC
