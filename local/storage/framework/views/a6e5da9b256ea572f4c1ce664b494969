@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="<?php echo e(site_locale()); ?>">
+<head>
+      <?php echo $__env->make('partials.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</head>
+
+<body id="statamic" :class="{ 'nav-visible': navVisible, 'overflow-hidden': modalOpen }">
+
+      <?php if(!$outpost->isReadyForProduction()): ?>
+            <div class="site-warning-stripe <?php echo e($outpost->isTrialMode() ? 'status-trial' : ''); ?> flexy">
+                  <div class="fill">
+                        <?php if($outpost->hasSuccessfulResponse() && $outpost->isTrialMode()): ?>
+                              <span class="mr-2"><?php echo e(t('trial_mode')); ?></span>
+                        <?php endif; ?>
+                        <span class="<?php echo e($outpost->isTrialMode() ? 'text-grey' : ''); ?>">
+                        <?php if($outpost->licensingMessage()): ?>
+                              <?php echo $outpost->licensingMessage(); ?>
+
+                        <?php endif; ?>
+                        </span>
+                  </div>
+                  <div class="buttons">
+                        <?php if(request()->route()->getName() !== 'licensing'): ?>
+                              <a href="<?php echo e(route('licensing')); ?>" class="btn btn-small mr-1"><?php echo e(t('manage')); ?></a>
+                        <?php endif; ?>
+                        <a href="https://statamic.com/buy" class="btn btn-primary btn-small" target="_blank"><?php echo e(t('buy_now')); ?></a>
+                  </div>
+            </div>
+      <?php endif; ?>
+
+      <nav class="nav-mobile">
+          <a href="<?php echo e(route('cp')); ?>" class="logo">
+              <?php echo svg('statamic-logo'); ?>
+
+          </a>
+          <a @click.prevent="toggleNav" class="toggle">
+              <span class="icon icon-menu"></span>
+          </a>
+      </nav>
+
+      <div class="sneak-peek-wrapper">
+            <div class="sneak-peek-viewport">
+                  <i class="icon icon-circular-graph animation-spin"></i>
+                  <div class="sneak-peek-resizer" @mousedown="sneakPeekResizeStart"></div>
+                  <div class="sneak-peek-iframe-wrap" id="sneak-peek"></div>
+            </div>
+      </div>
+
+      <?php echo $__env->make('partials.shortcuts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      <?php echo $__env->make('partials.alerts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      <?php echo $__env->make('partials.global-header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+      <div class="application-grid <?php echo $__env->yieldContent('content-class'); ?>">
+            <?php echo $__env->make('partials.nav-main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            <div class="content">
+                  <div class="page-wrapper">
+                        <div class="sneak-peek-header flexy">
+                              <h1 class="fill"><?php echo e(trans('cp.sneak_peeking')); ?></h1>
+                              <button class="btn btn-primary" @click="stopPreviewing"><?php echo e(trans('cp.done')); ?></button>
+                        </div>
+                        <?php echo $__env->yieldContent('content'); ?>
+                  </div>
+            </div>
+
+            <login-modal
+                  v-if="showLoginModal"
+                  username="<?php echo e(\Statamic\API\User::getCurrent()->username()); ?>"
+                  @closed="showLoginModal = false"
+            ></login-modal>
+
+            <vue-toast v-ref:toast></vue-toast>
+      </div>
+
+      <script>
+            Statamic.translations = <?php echo $translations; ?>;
+            Statamic.permissions = '<?php echo $permissions; ?>';
+            Statamic.version = '<?php echo STATAMIC_VERSION; ?>';
+
+            <?php if(session()->has('success')): ?>
+                Statamic.flash = [{
+                    type:    'success',
+                    message: '<?php echo e(session()->get('success')); ?>',
+                }];
+            <?php endif; ?>
+      </script>
+      <?php echo $__env->make('partials.scripts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+      <?php echo $__env->yieldContent('scripts'); ?>
+</body>
+</html>

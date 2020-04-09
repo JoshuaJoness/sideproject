@@ -1,0 +1,25 @@
+<?php foreach($items as $item): ?>
+
+    <li class="nav-<?php echo e($item->name()); ?> <?php echo e(nav_is($item->url()) ? 'visible active' : ''); ?>">
+        <a href="<?php echo e($item->url()); ?>">
+
+            <?php if($item->icon()): ?>
+                <span class="icon icon-<?php echo e($item->icon()); ?>"></span>
+            <?php endif; ?>
+
+            <span class="title"><?php echo e($item->title()); ?></span>
+
+            <?php if($item->badge()): ?>
+                <span class="badge bg-red"><?php echo e($item->badge()); ?></span>
+            <?php endif; ?>
+
+        </a>
+
+        <?php if(! $item->children()->isEmpty()): ?>
+            <ul>
+                <?php echo $__env->make('partials.nav-main-items', ['items' => $item->children()], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </ul>
+        <?php endif; ?>
+    </li>
+
+<?php endforeach; ?>

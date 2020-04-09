@@ -1,0 +1,37 @@
+<?php $__env->startSection('content-class', 'publishing'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+    <script>
+        <?php
+            $suggestions = isset($suggestions) ? $suggestions : [];
+        ?>
+        Statamic.Publish = {
+            locale: '<?php echo $locale; ?>',
+            contentData: <?php echo json_encode($content_data); ?>,
+            suggestions: <?php echo json_encode($suggestions); ?>,
+            fieldset: <?php echo json_encode($fieldset); ?>
+
+        };
+    </script>
+
+    <publish title="<?php echo e($title); ?>"
+             extra="<?php echo e(json_encode($extra)); ?>"
+             :is-new="<?php echo e(bool_str($is_new)); ?>"
+             content-type="<?php echo e($content_type); ?>"
+             uuid="<?php echo e($uuid); ?>"
+             slug="<?php echo e($slug); ?>"
+             uri="<?php echo e($uri); ?>"
+             url="<?php echo e($url); ?>"
+             submit-url="<?php echo e(route("{$content_type}.save")); ?>"
+             :status="<?php echo e(bool_str($status)); ?>"
+             locale="<?php echo e($locale); ?>"
+             locales="<?php echo e(json_encode($locales)); ?>"
+             :is-default-locale="<?php echo e(bool_str($is_default_locale)); ?>"
+             :remove-title="true"
+             :allow-save-and-add-another="<?php echo e(bool_str(in_array($content_type, ['page', 'entry', 'taxonomy']))); ?>"
+    ></publish>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

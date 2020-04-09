@@ -1,0 +1,13 @@
+<?php $__env->startSection('content-class', 'publishing'); ?>
+
+<?php $__env->startSection('content'); ?>
+
+
+        <fieldset-builder fieldset-title="<?php echo e($fieldset->title()); ?>"
+                          save-url="<?php echo e(route('fieldset.update', $fieldset->name())); ?>">
+        </fieldset-builder>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

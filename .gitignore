@@ -2,7 +2,5 @@
 .env
 node_modules/
 bower_components/
-local/cache/*
-local/storage/*
-local/temp/*
+
 installer.php

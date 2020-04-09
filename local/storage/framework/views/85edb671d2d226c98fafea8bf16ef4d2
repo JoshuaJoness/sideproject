@@ -1,0 +1,19 @@
+<?php $__env->startSection('nav-main'); ?>
+    <nav class="nav-main">
+        <ul class="mt-0">
+            <li class="nav-dashboard <?php echo e(request()->is('cp') ? 'visible active' : ''); ?>">
+                <a href="<?php echo e(route('dashboard')); ?>" title="<?php echo e(translate('cp.nav_dashboard')); ?>">
+                    <span class="title"><?php echo e(translate('cp.nav_dashboard')); ?></span>
+                </a>
+            </li>
+            <?php foreach($nav->children() as $item): ?>
+                <li class="section"><?php echo e($item->title()); ?></li>
+                <?php echo $__env->make('partials.nav-main-items', ['items' => $item->children()], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php endforeach; ?>
+            <li class="md:hidden"><a href="<?php echo e(route('account')); ?>"><?php echo e(t('profile')); ?></a></li>
+            <li class="md:hidden"><a href="<?php echo e(route('logout')); ?>"><?php echo e(t('sign_out')); ?></a></li>
+        </ul>
+    </nav>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->yieldContent('nav-main'); ?>

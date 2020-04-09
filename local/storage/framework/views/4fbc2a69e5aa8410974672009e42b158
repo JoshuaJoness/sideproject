@@ -1,0 +1,11 @@
+<div class="flashdance" v-cloak></div>
+
+<?php if(count($errors) > 0): ?>
+    <div class="page-wrapper">
+        <div class="alert alert-danger">
+            <?php foreach($errors->all() as $error): ?>
+                <p><?php echo e($error); ?></p>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
