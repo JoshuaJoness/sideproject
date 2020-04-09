@@ -3,8 +3,8 @@
     <div class="header-links-left">
         {{ header_menu }}
             {{ if type == "header_link" }}
-                    {{ if header_link_type == "text" }}
-                        <p class="text-link"> {{ header_link }} </p> 
+                    {{ if header_link_type == "text" && id !== "login" }}
+                        <a><p class="text-link"> {{ header_link }} </p></a> 
                     {{ /if }}       
             {{ /if }}
         {{ /header_menu }}
@@ -12,15 +12,29 @@
      <div class="header-links-right">
          {{ header_menu }}
              {{ if type == "header_link" }}
+                     {{ if id == "login" }}
+                         <a><p class="text-link"> {{ header_link }} </p></a>
+                     {{ /if }}
                      {{ if header_link_type == "button" }}
-                         <p class="text-link"> {{ header_link }} </p> 
+                         <button class="get-started-button"> {{ header_link }} </button> 
                      {{ /if }}       
              {{ /if }}
          {{ /header_menu }}
       </div>
  </div>
     
-        <h1 class="large-text-heading">{{ large_text_heading }}</h1>
+
+       <div class="headings-container">
+        {{ large_text_heading }}
+            {{ if type == "large_text_heading" && class !== "highlight" }}
+                <h1 id="large-text-heading" class="heading-one"> {{ large_text_heading }} </h1>
+            {{ /if }}
+            {{ if type == "large_text_heading" && class == "highlight" }}
+                <h1 class="{{ class }}" id="large-text-heading"> {{ large_text_heading }} </h1>
+            {{ /if }}
+        {{ /large_text_heading }}
+       </div>
+
 {{ image }}
         {{ if type == "image" }}
             
@@ -35,8 +49,10 @@
              
         {{ /if }}
 {{ /image }}
-
-<input class="input"></input>
+<div class="sign-up-container">
+  <input class="input" placeholder="name@email.com"></input>
+  <button class="button">Get Your Demo</button>
+</div>
     
     <!-- {{ content }} -->
 </div>

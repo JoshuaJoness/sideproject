@@ -25,4 +25,34 @@ sections:
                 display: Image
         type: replicator
         display: Image
+      large_text_heading:
+        buttons:
+          - h2
+          - h3
+          - bold
+          - italic
+          - unorderedlist
+          - orderedlist
+          - removeformat
+          - quote
+          - anchor
+        style: sans
+        spellcheck: true
+        allow_source: true
+        allow_internal_links: true
+        link_noopener: false
+        link_noreferrer: false
+        target_blank: false
+        semantic_elements: false
+        restrict_assets: false
+        sets:
+          large_text_heading:
+            display: 'Large text heading'
+            fields:
+              field_1:
+                fieldset: large_text_heading
+                type: partial
+                display: 'Field 1'
+        type: bard
+        display: 'Large Text Heading'
 taxonomies: true

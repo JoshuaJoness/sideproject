@@ -31,7 +31,8 @@ header_menu:
   -
     type: header_link
     header_link: Login
-    header_link_type: button
+    header_link_type: text
+    id: login
   -
     type: header_link
     header_link: 'Get Started'
@@ -45,7 +46,14 @@ image:
     type: image
     image: /assets/man.svg
     alignment: right
-large_text_heading: 'Your billing stack <br/>  is holding you back'
+large_text_heading:
+  -
+    type: large_text_heading
+    large_text_heading: 'Your billing stack'
+  -
+    type: large_text_heading
+    large_text_heading: 'is holding you back'
+    class: highlight
 title: 'Side Project'
 fieldset: default
 id: 0233fd05-e9c8-4209-9a4e-bc8c4d5075d1

@@ -5,5 +5,8 @@ sections:
       large_text_heading:
         type: text
         display: 'Large Text Heading'
+      class:
+        type: text
+        display: Class
 taxonomies: true
 title: 'Large Text Heading'

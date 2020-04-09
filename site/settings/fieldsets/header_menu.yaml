@@ -12,5 +12,8 @@ sections:
         inline: false
         type: radio
         display: 'Header Link Type'
+      id:
+        type: text
+        display: ID
 taxonomies: true
 title: 'Header Link'
